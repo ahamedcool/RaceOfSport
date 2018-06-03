@@ -37,52 +37,40 @@
             android:id="@+id/start_reverse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="예약 시작 시간"
             android:textColor="#ffffff"
             android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/end_reverse"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/end_reverse"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:text="예약 끝 시간"
             android:textColor="#ffffff"
             android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView9"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:text="~"
-            android:textColor="#ffffff"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/start_reverse"
-            app:layout_constraintStart_toEndOf="@+id/start_reverse"
-            app:layout_constraintTop_toTopOf="@+id/start_reverse"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintBottom_toTopOf="@+id/allow_check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_reverse" />
 
         <TextView
             android:id="@+id/allow_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
             android:text="승인 여부"
             android:textColor="#ffffff"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/end_reverse" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

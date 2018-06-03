@@ -4,22 +4,24 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_reserve.*
-import android.widget.TimePicker
 import android.app.TimePickerDialog
 import java.util.*
 import android.app.DatePickerDialog
-import android.widget.Toast
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.result.Result
+import android.content.SharedPreferences
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import org.jetbrains.anko.startActivity
 
 
 class ReserveActivity : AppCompatActivity() {
 
+    val PREFS_FILENAME = "com.highthon.raceofsport.prefs"
+    var prefs: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reserve)
+
+        prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
 
         btn_reverse.setOnClickListener {
             val name = edit_name.text.toString()
@@ -30,24 +32,15 @@ class ReserveActivity : AppCompatActivity() {
             doAsync {
 
                 try {
-                    /* Fuel.post("http://192.168.137.1:8000/api/appoint/register", listOf("user_id" to id, "user_password" to pw)).response { request, response, result ->
-                        run {
-                                when (result) {
-                                    is Result.Failure -> {
-                                        val ex = result.getException().toString()
-                                        uiThread{ Toast.makeText(it, ex, Toast.LENGTH_SHORT).show() }
-                                    }
-                                    is Result.Success -> {
-                                        val data= result.get()
+                    val editor = prefs!!.edit()
+                    editor.putString("name", name)
+                    editor.putString("date", date)
+                    editor.putString("time", time)
+                    editor.putString("phone", phone)
+                    editor.apply()
 
-                                        uiThread{ Toast.makeText(it, "예약이 완료되었습니다", Toast.LENGTH_SHORT).show() }
-
-                                        finish()
-                                    }
-                                }
-
-                        }
-                    } */
+                    startActivity<ReservedInfoActivity>()
+                    finish()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -55,7 +48,7 @@ class ReserveActivity : AppCompatActivity() {
         }
 
     }
-    public fun date(v: View?){
+    fun date(v: View?){
         val c : Calendar= Calendar.getInstance()
         val dialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             val month_c = month+1
