@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#23395B">
+
+    <TextView
+        android:id="@+id/reverse_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="체육관 \n        예약하기"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="예약할 체육관을 입력해주세요."
+            android:layout_marginStart="40dp"
+            android:textColor="#ffffff"
+            android:textSize="17sp" />
+
+        <EditText
+            android:textColor="#ffffff"
+            android:paddingLeft="12dp"
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="예약할 날짜를 정해주세요."
+            android:layout_marginStart="40dp"
+            android:textColor="#ffffff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:paddingLeft="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="date"
+            android:id="@+id/text_date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/radius"
+            android:ems="10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="예약할 시간을 정해주세요."
+            android:layout_marginStart="40dp"
+            android:textColor="#ffffff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:paddingLeft="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="time"
+            android:id="@+id/text_time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/radius"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="12dp"
+            android:text="전화번호를 입력해주세요."
+            android:layout_marginStart="40dp"
+            android:textColor="#ffffff"
+            android:textSize="17sp" />
+
+        <EditText
+            android:textColor="#ffffff"
+            android:paddingLeft="12dp"
+            android:id="@+id/edit_phone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:inputType="phone"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_gravity="bottom"
+        android:id="@+id/btn_reverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:text="예약" />
+
+</LinearLayout>

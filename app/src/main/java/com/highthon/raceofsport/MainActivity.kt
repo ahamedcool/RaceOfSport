@@ -1,5 +1,7 @@
 package com.highthon.raceofsport
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -14,6 +16,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
+import org.json.JSONObject
+import org.json.JSONArray
+
+
+
+
 
 class MainActivity : AppCompatActivity(), OnItemClickListener{
 
@@ -27,17 +35,27 @@ class MainActivity : AppCompatActivity(), OnItemClickListener{
     private var adapterReserve: RecyclerView.Adapter<*>? = null
     private val mItemsReserve = ArrayList<RecyclerItem>()
 
+    val PREFS_FILENAME = "com.highthon.raceofsport.prefs"
+    var prefs: SharedPreferences? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
 
+        prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
+        val id = prefs!!.getString("ID", "ERROR")
+
         list_gym.layoutManager = LinearLayoutManager(this)
         list_gym.setHasFixedSize(false)
         adapterGym = GymAdapter(mItemsGym, this)
         list_gym.adapter = adapterGym
         getGymList()
+
+
+        title_actionbar.title = "$id 님, 안녕하세요!"
 
         /*list_reserve.layoutManager = LinearLayoutManager(this)
         list_reserve.setHasFixedSize(false)
@@ -51,11 +69,19 @@ class MainActivity : AppCompatActivity(), OnItemClickListener{
         doAsync {
 
             try {
-                Fuel.get("http://192.168.137.1:8000/api/gym/available").responseJson { request, response, result ->
+                /*Fuel.get("http://192.168.137.1:8000/api/gym/available").responseJson { request, response, result ->
                     run {
                         result.fold(success = { json ->
                             uiThread{
                                 Toast.makeText(it,json.array().toString(),Toast.LENGTH_SHORT).show()
+
+                                val jsonArrayList : JSONArray = json.array()   // JSONArray 생성
+                                for (i in 0..(jsonArrayList.length() - 1)){
+                                    val item = jsonArrayList.getJSONObject(i)
+                                    mItemsGym.add(RecyclerItem(item.getString("gymRegion")+" "+item.getString("gymLocation")))
+                                }
+
+
                             }
                         }, failure = { error ->
                             uiThread{
@@ -65,8 +91,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener{
                         })
 
                     }
-                }
-                mItemsGym.add(RecyclerItem("A"))
+                }*/
             } catch (e: Exception) {
                 e.printStackTrace()
             }

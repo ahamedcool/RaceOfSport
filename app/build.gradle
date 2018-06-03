@@ -8,7 +8,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.highthon.raceofsport"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,8 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:design:27.1.1'
 
+
+    implementation 'com.github.kittinunf.fuel:fuel-android:1.13.0'
     implementation "org.jetbrains.anko:anko:$anko_version"
 
     testImplementation 'junit:junit:4.12'
